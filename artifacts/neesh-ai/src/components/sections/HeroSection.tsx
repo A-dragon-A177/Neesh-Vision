@@ -85,14 +85,19 @@ function GlitchCard({ text, color, x, y, delay }: { text: string; color: string;
   const [glitching, setGlitching] = useState(false);
 
   useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    let glitchTimeout: ReturnType<typeof setTimeout>;
     const timer = setTimeout(() => {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         setGlitching(true);
-        setTimeout(() => setGlitching(false), 800);
+        glitchTimeout = setTimeout(() => setGlitching(false), 800);
       }, 2500 + Math.random() * 3000);
-      return () => clearInterval(interval);
     }, delay);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(glitchTimeout);
+      clearInterval(interval);
+    };
   }, [delay]);
 
   return (
