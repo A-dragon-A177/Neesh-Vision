@@ -16,8 +16,8 @@ export function useScrollProgress() {
   return progress;
 }
 
-export function useInView(threshold = 0.2) {
-  const ref = useRef<HTMLElement>(null);
+export function useInView<T extends Element = HTMLElement>(threshold = 0.2) {
+  const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {

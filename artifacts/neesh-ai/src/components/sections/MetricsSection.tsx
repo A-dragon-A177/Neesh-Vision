@@ -10,7 +10,7 @@ const METRICS = [
 ];
 
 function CircleProgress({ value, color, size = 100 }: { value: number; color: string; size?: number }) {
-  const { ref, inView } = useInView(0.3);
+  const { ref, inView } = useInView<SVGSVGElement>(0.3);
   const [animated, setAnimated] = useState(false);
   const r = (size - 12) / 2;
   const circ = 2 * Math.PI * r;
@@ -20,7 +20,7 @@ function CircleProgress({ value, color, size = 100 }: { value: number; color: st
   }, [inView]);
 
   return (
-    <svg ref={ref as React.RefObject<SVGSVGElement>} width={size} height={size} className="progress-ring">
+    <svg ref={ref} width={size} height={size} className="progress-ring">
       <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="8" />
       <circle
         cx={size / 2}
