@@ -116,12 +116,22 @@
   50% { opacity: 0.85; filter: brightness(1.2) hue-rotate(10deg); }
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 .animate-float { animation: float 4s ease-in-out infinite; }
 .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
 .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
 .animate-spin-slow { animation: spin-slow 20s linear infinite; }
 .animate-hologram { animation: hologram 3s ease-in-out infinite; }
 .animate-glitch { animation: glitch 0.8s ease-in-out forwards; }
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
 
 .glitch-card {
   animation: float 3s ease-in-out infinite;
@@ -159,6 +169,13 @@
 
 .cyan-text-glow {
   text-shadow: 0 0 20px rgba(9, 218, 237, 0.6);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #09daed, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Section styles */

@@ -13,6 +13,7 @@ export default function FooterSection() {
 
   return (
     <footer className="section-dark border-t border-white/5 pt-16 pb-8">
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#09daed]/40 to-transparent mb-16" />
       <div className="max-w-7xl mx-auto px-6">
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
@@ -35,10 +36,10 @@ export default function FooterSection() {
                 Turn your raw ideas into validated products using AI-powered feedback loops and intelligent gap detection.
               </p>
               <div className="flex items-center gap-3">
-                {["X", "Li", "Gh", "Ds"].map((social) => (
+                {["𝕏", "in", "gh", "ds"].map((social) => (
                   <div
                     key={social}
-                    className="w-8 h-8 border border-white/10 flex items-center justify-center text-white/40 text-xs hover:border-[#09daed]/40 hover:text-[#09daed] transition-all duration-200 cursor-pointer"
+                    className="w-8 h-8 border border-white/10 flex items-center justify-center text-white/40 text-xs hover:border-[#09daed]/40 hover:text-[#09daed] transition-all duration-200 cursor-pointer font-medium"
                   >
                     {social}
                   </div>

@@ -22,7 +22,7 @@ export default function TestimonialsSection() {
   const { ref, inView } = useInView(0.2);
 
   return (
-    <section className="section-light py-24">
+    <section className="bg-gray-50 border-t border-b border-gray-100 py-24">
       <div className="max-w-5xl mx-auto px-6">
         <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center mb-16">
           <motion.div
@@ -52,8 +52,11 @@ export default function TestimonialsSection() {
               className="p-8 border border-gray-100 bg-white relative"
               style={{ boxShadow: "0 1px 20px rgba(0,0,0,0.06)" }}
             >
-              {/* Quote mark */}
-              <div className="text-6xl font-bold leading-none mb-4" style={{ color: `${t.color}20` }}>"</div>
+              {/* Quote mark and stars */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-6xl font-bold leading-none" style={{ color: `${t.color}20` }}>"</div>
+                <div className="text-[#09daed] tracking-widest text-lg">★★★★★</div>
+              </div>
 
               <blockquote className="text-gray-800 text-lg font-medium leading-relaxed mb-6">
                 "{t.quote}"

@@ -40,21 +40,23 @@ function App() {
   }, []);
 
   return (
-    <div className="relative">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <ProblemLoopSection />
-        <ProductSimSection />
-        <FeaturesSection />
-        <MetricsSection />
-        <PersonaSection />
-        <TransformSection />
-        <PricingSection />
-        <TestimonialsSection />
-        <FinalCTASection />
-      </main>
-      <FooterSection />
+    <div style={{ position: "relative" }}>
+      <div className="relative">
+        <Navbar />
+        <main>
+          <HeroSection />
+          <ProblemLoopSection />
+          <ProductSimSection />
+          <FeaturesSection />
+          <MetricsSection />
+          <PersonaSection />
+          <TransformSection />
+          <PricingSection />
+          <TestimonialsSection />
+          <FinalCTASection />
+        </main>
+        <FooterSection />
+      </div>
     </div>
   );
 }

@@ -51,7 +51,7 @@ export default function ProblemLoopSection() {
   const cy = 175;
 
   return (
-    <section ref={sectionRef} className="relative section-dark py-24 overflow-hidden">
+    <section ref={sectionRef} className="relative section-dark py-32 overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `radial-gradient(#09daed 1px, transparent 1px)`,
@@ -65,6 +65,8 @@ export default function ProblemLoopSection() {
           <div className="flex items-center justify-center">
             <div className="relative" style={{ width: 350, height: 350 }}>
               <svg width="350" height="350" className="absolute inset-0">
+                {/* Dotted path behind nodes */}
+                <circle cx={cx} cy={cy} r={R} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" strokeDasharray="4 8" />
                 {/* Outer ring */}
                 <circle cx={cx} cy={cy} r={R} fill="none" stroke="rgba(9,218,237,0.1)" strokeWidth="1" />
                 <circle cx={cx} cy={cy} r={R} fill="none" stroke="rgba(9,218,237,0.3)" strokeWidth="1"
@@ -110,13 +112,13 @@ export default function ProblemLoopSection() {
                     key={node.label}
                     className="absolute flex flex-col items-center"
                     style={{
-                      left: cx + x - 32,
-                      top: cy + y - 32,
-                      width: 64,
+                      left: cx + x - 34,
+                      top: cy + y - 34,
+                      width: 68,
                     }}
                   >
                     <div
-                      className={`w-14 h-14 border flex items-center justify-center text-xs font-semibold transition-all duration-500 ${
+                      className={`w-[68px] h-[68px] border flex items-center justify-center text-xs font-semibold transition-all duration-500 ${
                         isActive
                           ? "border-[#09daed] bg-[#09daed]/20 text-[#09daed] shadow-[0_0_20px_rgba(9,218,237,0.4)]"
                           : "border-white/10 bg-white/5 text-white/30"
@@ -190,6 +192,9 @@ export default function ProblemLoopSection() {
           </div>
         </div>
       </div>
+
+      {/* Section separator */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#09daed]/20 to-transparent" />
     </section>
   );
 }

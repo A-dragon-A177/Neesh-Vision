@@ -73,12 +73,12 @@ function DashboardPreview2D() {
 }
 
 const ideaFragments = [
-  { text: "User Research", color: "rgba(9,218,237,0.12)", x: "8%", y: "22%" },
-  { text: "MVP Scope", color: "rgba(255,255,255,0.05)", x: "72%", y: "17%" },
-  { text: "Market Fit?", color: "rgba(9,218,237,0.08)", x: "78%", y: "58%" },
-  { text: "Pricing Model", color: "rgba(255,255,255,0.04)", x: "4%", y: "62%" },
-  { text: "Target Users", color: "rgba(9,218,237,0.07)", x: "42%", y: "78%" },
-  { text: "Feature Priority", color: "rgba(255,255,255,0.05)", x: "18%", y: "48%" },
+  { text: "User Research", color: "rgba(9,218,237,0.09)", x: "87%", y: "14%" },
+  { text: "MVP Scope", color: "rgba(255,255,255,0.05)", x: "90%", y: "34%" },
+  { text: "Market Fit?", color: "rgba(9,218,237,0.07)", x: "85%", y: "72%" },
+  { text: "Pricing Model", color: "rgba(255,255,255,0.04)", x: "88%", y: "86%" },
+  { text: "Target Users", color: "rgba(9,218,237,0.06)", x: "1%", y: "82%" },
+  { text: "Feature Priority", color: "rgba(255,255,255,0.04)", x: "1%", y: "90%" },
 ];
 
 function GlitchCard({ text, color, x, y, delay }: { text: string; color: string; x: string; y: string; delay: number }) {
@@ -102,7 +102,7 @@ function GlitchCard({ text, color, x, y, delay }: { text: string; color: string;
 
   return (
     <div
-      className={`absolute px-3 py-2 text-xs text-white/50 border border-white/8 font-mono hidden md:block ${glitching ? "animate-glitch" : "animate-float"}`}
+      className={`absolute px-3 py-2 text-xs text-white/40 border border-white/8 font-mono hidden md:block pointer-events-none select-none z-0 ${glitching ? "animate-glitch" : "animate-float"}`}
       style={{ left: x, top: y, background: color, animationDelay: `${delay}ms` }}
     >
       {text}
@@ -119,7 +119,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen section-dark flex items-center overflow-hidden"
+      className="relative min-h-[100vh] section-dark flex items-center overflow-hidden"
     >
       {/* Background grid */}
       <div
@@ -235,6 +235,9 @@ export default function HeroSection() {
         <span className="text-white/30 text-xs tracking-widest uppercase">Scroll</span>
         <div className="w-0.5 h-8 bg-gradient-to-b from-[#09daed]/60 to-transparent animate-pulse" />
       </motion.div>
+
+      {/* Section separator */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#09daed]/20 to-transparent" />
     </section>
   );
 }

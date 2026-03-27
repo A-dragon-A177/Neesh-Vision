@@ -23,6 +23,7 @@ export default function FinalCTASection() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8 }}
+          className="border border-[#09daed]/20 p-12 bg-[#050a12]/50 backdrop-blur-sm animate-pulse-glow"
         >
           {/* Minimal UI collapse animation */}
           <motion.div

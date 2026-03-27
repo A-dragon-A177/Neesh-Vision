@@ -46,6 +46,14 @@ function FeatureCard({ feature, index }: { feature: typeof FEATURES[0]; index: n
       className="group relative glass-dark p-6 border border-white/5 hover:border-[#09daed]/30 transition-all duration-300"
       style={{ animationDelay: `${index * 100}ms` }}
     >
+      {/* Number badge */}
+      <div className="absolute top-2 left-2 text-[10px] text-white/20 font-mono">
+        {String(index + 1).padStart(2, '0')}
+      </div>
+      
+      {/* Thin left border accent */}
+      <div className="absolute top-0 left-0 bottom-0 w-[2px] bg-transparent group-hover:bg-[#09daed] transition-colors duration-300" />
+
       {/* Corner accent */}
       <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#09daed]/0 group-hover:border-[#09daed]/40 transition-all duration-300" />
       <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[#09daed]/0 group-hover:border-[#09daed]/40 transition-all duration-300" />
@@ -118,6 +126,9 @@ export default function FeaturesSection() {
           </motion.div>
         </div>
       </div>
+
+      {/* Section separator */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#09daed]/20 to-transparent" />
     </section>
   );
 }

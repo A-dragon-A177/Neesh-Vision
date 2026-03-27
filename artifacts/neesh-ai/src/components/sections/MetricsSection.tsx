@@ -68,6 +68,9 @@ export default function MetricsSection() {
 
   return (
     <section className="relative section-dark py-24 overflow-hidden">
+      {/* Background radial gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,218,237,0.03)_0%,transparent_70%)]" />
+
       <ParticleField />
 
       {/* AI Core Glow */}
@@ -75,13 +78,14 @@ export default function MetricsSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#09daed]/8 blur-[50px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center mb-16">
+        <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center mb-16 flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="text-[#09daed] text-xs font-medium tracking-widest uppercase mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#09daed]/30 bg-[#09daed]/5 mb-6"
           >
-            AI Metrics
+            <div className="w-1.5 h-1.5 bg-[#09daed] rounded-full animate-pulse" />
+            <span className="text-[#09daed] text-xs font-medium tracking-widest uppercase">AI Core • Live</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -94,7 +98,7 @@ export default function MetricsSection() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {METRICS.map((metric, i) => (
             <motion.div
               key={metric.label}
@@ -129,6 +133,9 @@ export default function MetricsSection() {
           ))}
         </div>
       </div>
+
+      {/* Section separator */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#09daed]/20 to-transparent" />
     </section>
   );
 }

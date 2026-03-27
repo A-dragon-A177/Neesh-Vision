@@ -22,7 +22,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 bg-[#09daed] flex items-center justify-center">
+          <div className="w-7 h-7 bg-[#09daed] flex items-center justify-center shadow-[inset_0_0_8px_rgba(255,255,255,0.5)]">
             <span className="text-black font-bold text-xs">N</span>
           </div>
           <span className="text-white font-semibold text-sm tracking-wide">Neesh AI</span>

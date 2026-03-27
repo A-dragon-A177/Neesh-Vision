@@ -112,6 +112,9 @@ export default function PersonaSection() {
           ))}
         </div>
       </div>
+
+      {/* Section separator */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#09daed]/20 to-transparent" />
     </section>
   );
 }

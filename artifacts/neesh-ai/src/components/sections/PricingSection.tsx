@@ -69,9 +69,10 @@ function PricingCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) 
       transition={{ duration: 0.6, delay: index * 0.15 }}
       className={`relative p-6 border flex flex-col ${
         plan.highlight
-          ? "border-[#09daed]/60 bg-gradient-to-b from-[#09daed]/8 to-transparent"
+          ? "border-[#09daed]/60 bg-gradient-to-b from-[#09daed]/8 to-transparent scale-[1.03] z-10"
           : "border-white/10 bg-white/2"
       }`}
+      style={plan.highlight ? { boxShadow: "0 0 40px rgba(9,218,237,0.15)" } : {}}
     >
       {plan.highlight && (
         <div className="absolute -top-px left-0 right-0 h-0.5 bg-[#09daed]" />
@@ -161,7 +162,19 @@ export default function PricingSection() {
             <PricingCard key={plan.name} plan={plan} index={i} />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center mt-12 text-white/40 text-sm"
+        >
+          30-day money-back guarantee • No setup fees • Cancel anytime
+        </motion.div>
       </div>
+
+      {/* Section separator */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#09daed]/20 to-transparent" />
     </section>
   );
 }
