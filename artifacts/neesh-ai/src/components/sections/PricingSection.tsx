@@ -3,56 +3,51 @@ import { useInView } from "../../hooks/useScrollProgress";
 
 const PLANS = [
   {
-    name: "Seedling",
+    name: "Free",
     badge: "FREE",
     price: "$0",
     period: "forever",
-    desc: "Start validating your first idea",
-    color: "#ffffff",
+    desc: "For individuals just starting out",
+    color: "#64748b",
     highlight: false,
     features: [
-      "1 Project",
+      "Up to 5 projects",
       "Basic AI chatbot",
-      "Core analytics",
-      "Neesh AI branding",
+      "Public feedback forms",
       "Community support",
-      "Gap detection (basic)",
     ],
     cta: "Get Started Free",
   },
   {
-    name: "Founder",
-    badge: "PRO",
-    price: "$49",
+    name: "Pro",
+    badge: "MOST POPULAR",
+    price: "$9.99",
     period: "per month",
-    desc: "For serious founders building real products",
+    desc: "For professionals & growing teams",
     color: "#09daed",
     highlight: true,
     features: [
-      "5 Projects",
-      "GPT-4o / Claude AI",
-      "No Neesh AI branding",
-      "Audience insights",
-      "Export reports (CSV, PDF)",
+      "Unlimited projects",
+      "Advanced AI (GPT-4 class)",
+      "White-label branding",
+      "Cross-promotion engine",
       "Priority support",
     ],
-    cta: "Start 14-Day Trial",
+    cta: "Upgrade to Pro",
   },
   {
-    name: "Visionary",
+    name: "Enterprise",
     badge: "ENTERPRISE",
     price: "Custom",
     period: "contact us",
-    desc: "For teams validating at scale",
+    desc: "For large-scale operations",
     color: "#7c3aed",
     highlight: false,
     features: [
-      "Unlimited projects",
-      "Full API access",
-      "Team collaboration",
-      "Dedicated AI instance",
-      "Dedicated support",
-      "SLA & compliance",
+      "Everything in Pro",
+      "Custom AI model training",
+      "SLA & dedicated support",
+      "Team accounts & API",
     ],
     cta: "Contact Sales",
   },
@@ -69,10 +64,14 @@ function PricingCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) 
       transition={{ duration: 0.6, delay: index * 0.15 }}
       className={`relative p-6 border flex flex-col ${
         plan.highlight
-          ? "border-[#09daed]/60 bg-gradient-to-b from-[#09daed]/8 to-transparent scale-[1.03] z-10"
-          : "border-white/10 bg-white/2"
+          ? "border-[#09daed]/50 bg-white scale-[1.03] z-10"
+          : "border-gray-200 bg-white"
       }`}
-      style={plan.highlight ? { boxShadow: "0 0 40px rgba(9,218,237,0.15)" } : {}}
+      style={
+        plan.highlight
+          ? { boxShadow: "0 0 50px rgba(9,218,237,0.12), 0 8px 32px rgba(0,0,0,0.06)" }
+          : { boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }
+      }
     >
       {plan.highlight && (
         <div className="absolute -top-px left-0 right-0 h-0.5 bg-[#09daed]" />
@@ -85,12 +84,12 @@ function PricingCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) 
 
       <div className="flex items-start justify-between mb-6">
         <div>
-          <div className="text-white font-bold text-lg">{plan.name}</div>
-          <div className="text-white/50 text-xs mt-0.5">{plan.desc}</div>
+          <div className="text-gray-900 font-bold text-lg">{plan.name}</div>
+          <div className="text-gray-400 text-xs mt-0.5">{plan.desc}</div>
         </div>
         <div
           className="text-[9px] font-bold tracking-widest px-2 py-0.5 border"
-          style={{ color: plan.color, borderColor: `${plan.color}40`, background: `${plan.color}10` }}
+          style={{ color: plan.color, borderColor: `${plan.color}40`, background: `${plan.color}08` }}
         >
           {plan.badge}
         </div>
@@ -98,14 +97,14 @@ function PricingCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) 
 
       <div className="mb-6">
         <div className="flex items-baseline gap-1">
-          <span className="text-3xl font-bold text-white">{plan.price}</span>
-          <span className="text-white/40 text-sm">/ {plan.period}</span>
+          <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
+          <span className="text-gray-400 text-sm">/ {plan.period}</span>
         </div>
       </div>
 
       <ul className="space-y-2.5 mb-8 flex-1">
         {plan.features.map((feat) => (
-          <li key={feat} className="flex items-center gap-2.5 text-sm text-white/70">
+          <li key={feat} className="flex items-center gap-2.5 text-sm text-gray-600">
             <div className="w-1 h-1 flex-shrink-0" style={{ background: plan.color }} />
             {feat}
           </li>
@@ -116,7 +115,7 @@ function PricingCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) 
         className={`w-full py-3 text-sm font-semibold transition-all duration-200 ${
           plan.highlight
             ? "bg-[#09daed] text-black hover:bg-[#07c4d4]"
-            : "border border-white/20 text-white hover:border-white/40"
+            : "border border-gray-300 text-gray-700 hover:border-[#09daed] hover:text-[#09daed]"
         }`}
       >
         {plan.cta}
@@ -129,7 +128,7 @@ export default function PricingSection() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="pricing" className="section-dark py-24">
+    <section id="pricing" className="bg-[#f0fdfe] py-24 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center mb-16">
           <motion.div
@@ -143,7 +142,7 @@ export default function PricingSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
             Start free. Scale when ready.
           </motion.h2>
@@ -151,9 +150,9 @@ export default function PricingSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-white/50 max-w-lg mx-auto"
+            className="text-gray-500 max-w-lg mx-auto"
           >
-            No hidden fees. Cancel anytime. Your first validation loop is on us.
+            No hidden fees. No credit card required. Start validating your ideas today.
           </motion.p>
         </div>
 
@@ -162,18 +161,8 @@ export default function PricingSection() {
             <PricingCard key={plan.name} plan={plan} index={i} />
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-12 text-white/40 text-sm"
-        >
-          30-day money-back guarantee • No setup fees • Cancel anytime
-        </motion.div>
       </div>
 
-      {/* Section separator */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#09daed]/20 to-transparent" />
     </section>
   );

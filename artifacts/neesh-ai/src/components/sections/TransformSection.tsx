@@ -5,19 +5,27 @@ import { gsap, ScrollTrigger } from "../../lib/gsap";
 
 function ChaosSide() {
   const items = [
-    { text: "❌ No clear value prop", x: "10%", y: "15%" },
-    { text: "⚠ Confused users", x: "50%", y: "10%" },
-    { text: "❌ Wrong feature built", x: "20%", y: "40%" },
-    { text: "⚠ Vague feedback", x: "55%", y: "38%" },
-    { text: "❌ 6 months wasted", x: "10%", y: "65%" },
-    { text: "⚠ No market signal", x: "45%", y: "65%" },
+    { text: "❌ No clear value prop", x: "8%", y: "10%" },
+    { text: "⚠ Confused users dropping off", x: "46%", y: "7%" },
+    { text: "❌ Wrong feature built for months", x: "16%", y: "30%" },
+    { text: "⚠ Vague, unusable feedback", x: "50%", y: "26%" },
+    { text: "❌ 6 months of runway wasted", x: "8%", y: "52%" },
+    { text: "⚠ No market signal at all", x: "44%", y: "48%" },
+    { text: "❌ Team building in different directions", x: "10%", y: "70%" },
+    { text: "⚠ Investor pitch rejected again", x: "42%", y: "68%" },
+    { text: "❌ Launched to silence", x: "20%", y: "86%" },
   ];
+
   return (
-    <div className="relative h-full min-h-[320px]" style={{ background: "linear-gradient(135deg, #1a0505, #200a0a)" }}>
-      <div className="absolute inset-0 opacity-[0.15]"
+    <div
+      className="relative h-full min-h-[360px]"
+      style={{ background: "linear-gradient(135deg, #fff5f5, #fff0f0)" }}
+    >
+      <div
+        className="absolute inset-0 opacity-[0.08]"
         style={{
-          backgroundImage: `linear-gradient(rgba(239,68,68,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(239,68,68,0.4) 1px, transparent 1px)`,
-          backgroundSize: "30px 30px",
+          backgroundImage: `linear-gradient(rgba(239,68,68,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(239,68,68,0.6) 1px, transparent 1px)`,
+          backgroundSize: "28px 28px",
         }}
       />
       {items.map((item, i) => (
@@ -25,22 +33,22 @@ function ChaosSide() {
           key={i}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: i * 0.1 }}
-          className="absolute text-xs border border-red-500/20 px-2 py-1 text-red-300/80 bg-red-500/5"
-          style={{ left: item.x, top: item.y }}
+          transition={{ delay: i * 0.08 }}
+          className="absolute text-xs border border-red-200 px-2 py-1 text-red-500 bg-red-50"
+          style={{ left: item.x, top: item.y, fontSize: "10px" }}
         >
           {item.text}
         </motion.div>
       ))}
-      <div className="absolute bottom-6 left-6 right-6 border border-red-500/20 bg-red-500/5 p-3">
-        <div className="text-red-400 text-xs font-bold mb-1">Status: LOST</div>
-        <div className="text-red-300/60 text-xs">No clear direction. Building blindly.</div>
+      <div className="absolute bottom-5 left-5 right-5 border border-red-200 bg-white p-3">
+        <div className="text-red-500 text-xs font-bold mb-1">Status: LOST</div>
+        <div className="text-red-400 text-xs">No signal. No direction. Building blindly.</div>
       </div>
-      {/* Random noise lines */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-10">
-        {[1, 2, 3, 4, 5].map(i => (
-          <line key={i} x1={`${Math.random() * 100}%`} y1={`${Math.random() * 100}%`} x2={`${Math.random() * 100}%`} y2={`${Math.random() * 100}%`} stroke="#ef4444" strokeWidth="0.5" />
-        ))}
+        <line x1="0%" y1="40%" x2="100%" y2="20%" stroke="#ef4444" strokeWidth="0.8" />
+        <line x1="20%" y1="0%" x2="80%" y2="90%" stroke="#ef4444" strokeWidth="0.5" />
+        <line x1="60%" y1="10%" x2="10%" y2="80%" stroke="#ef4444" strokeWidth="0.6" />
+        <line x1="0%" y1="65%" x2="90%" y2="45%" stroke="#ef4444" strokeWidth="0.5" />
       </svg>
     </div>
   );
@@ -50,17 +58,21 @@ function ClaritySide() {
   const items = [
     { label: "Clarity Index", val: 87, color: "#09daed" },
     { label: "Market Fit", val: 92, color: "#10b981" },
-    { label: "Gap Closed", val: 78, color: "#09daed" },
+    { label: "Gap Closed", val: 78, color: "#7c3aed" },
   ];
   return (
-    <div className="relative h-full min-h-[320px]" style={{ background: "linear-gradient(135deg, #030d12, #051a22)" }}>
-      <div className="absolute inset-0 opacity-[0.06]"
+    <div
+      className="relative h-full min-h-[360px]"
+      style={{ background: "linear-gradient(135deg, #f0fdfe, #e8fafa)" }}
+    >
+      <div
+        className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage: `linear-gradient(#09daed 1px, transparent 1px), linear-gradient(90deg, #09daed 1px, transparent 1px)`,
-          backgroundSize: "30px 30px",
+          backgroundSize: "28px 28px",
         }}
       />
-      <div className="absolute inset-4 border border-[#09daed]/10 flex flex-col justify-between p-4">
+      <div className="absolute inset-4 border border-[#09daed]/15 flex flex-col justify-between p-4">
         <div>
           <div className="flex items-center gap-2 mb-4">
             <div className="w-2 h-2 bg-[#09daed] animate-pulse" />
@@ -70,25 +82,25 @@ function ClaritySide() {
             {items.map((item) => (
               <div key={item.label}>
                 <div className="flex justify-between mb-1">
-                  <span className="text-white/60 text-xs">{item.label}</span>
-                  <span className="text-white text-xs font-bold">{item.val}%</span>
+                  <span className="text-gray-600 text-xs">{item.label}</span>
+                  <span className="text-gray-900 text-xs font-bold">{item.val}%</span>
                 </div>
-                <div className="h-1.5 bg-white/5">
+                <div className="h-1.5 bg-gray-100">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${item.val}%` }}
                     transition={{ duration: 1, delay: 0.3 }}
                     className="h-full"
-                    style={{ background: item.color, boxShadow: `0 0 8px ${item.color}60` }}
+                    style={{ background: item.color, boxShadow: `0 0 8px ${item.color}40` }}
                   />
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="border border-[#09daed]/20 bg-[#09daed]/5 p-3">
+        <div className="border border-[#09daed]/20 bg-white p-3">
           <div className="text-[#09daed] text-xs font-bold mb-1">✓ Idea Validated</div>
-          <div className="text-white/50 text-xs">Clear signal. Ready to build.</div>
+          <div className="text-gray-500 text-xs">Clear signal. Ready to build with confidence.</div>
         </div>
       </div>
     </div>
@@ -122,7 +134,7 @@ export default function TransformSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative section-dark py-24">
+    <section ref={sectionRef} className="relative bg-white py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center mb-16">
           <motion.div
@@ -136,7 +148,7 @@ export default function TransformSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-white"
+            className="text-3xl md:text-4xl font-bold text-gray-900"
           >
             From idea →{" "}
             <span className="text-[#09daed]">validated product.</span>
@@ -144,16 +156,16 @@ export default function TransformSection() {
         </div>
 
         <div className="relative">
-          <div className="grid grid-cols-2 gap-0 overflow-hidden">
+          <div className="grid grid-cols-2 gap-0 overflow-hidden border border-gray-100">
             <div>
-              <div className="text-xs font-bold text-red-400 tracking-widest uppercase mb-3 flex items-center gap-2">
+              <div className="text-xs font-bold text-red-500 tracking-widest uppercase mb-3 flex items-center gap-2 px-2 pt-2">
                 <div className="w-3 h-0.5 bg-red-400" />
                 Before: Chaos
               </div>
               <ChaosSide />
             </div>
             <div>
-              <div className="text-xs font-bold text-[#09daed] tracking-widest uppercase mb-3 flex items-center gap-2">
+              <div className="text-xs font-bold text-[#09daed] tracking-widest uppercase mb-3 flex items-center gap-2 px-2 pt-2">
                 <div className="w-3 h-0.5 bg-[#09daed]" />
                 After: Clarity
               </div>
@@ -167,17 +179,16 @@ export default function TransformSection() {
             style={{
               left: `${sweepX}%`,
               background: "linear-gradient(to bottom, #09daed, #09daed88, transparent)",
-              boxShadow: "0 0 10px rgba(9,218,237,0.5)",
+              boxShadow: "0 0 12px rgba(9,218,237,0.4)",
             }}
           >
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 border border-[#09daed] bg-[#050a12] flex items-center justify-center">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 border border-[#09daed] bg-white flex items-center justify-center">
               <div className="w-1.5 h-1.5 bg-[#09daed]" />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Section separator */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#09daed]/20 to-transparent" />
     </section>
   );

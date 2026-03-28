@@ -3,14 +3,14 @@ import { useInView } from "../../hooks/useScrollProgress";
 
 const TESTIMONIALS = [
   {
-    quote: "Neesh AI saved us 3 months of building the wrong feature.",
+    quote: "Neesh AI saved us 3 months of building the wrong feature. The gap detection is uncanny.",
     author: "Marcus T.",
     role: "Co-founder, Buildify",
     avatar: "MT",
     color: "#09daed",
   },
   {
-    quote: "The fastest way to turn a doc into a validated product.",
+    quote: "The fastest way to turn a doc into a validated product. Our investors loved the signal data.",
     author: "Priya K.",
     role: "Product Lead, Launchpad.io",
     avatar: "PK",
@@ -50,9 +50,8 @@ export default function TestimonialsSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.2 }}
               className="p-8 border border-gray-100 bg-white relative"
-              style={{ boxShadow: "0 1px 20px rgba(0,0,0,0.06)" }}
+              style={{ boxShadow: "0 1px 20px rgba(0,0,0,0.05)" }}
             >
-              {/* Quote mark and stars */}
               <div className="flex items-center justify-between mb-4">
                 <div className="text-6xl font-bold leading-none" style={{ color: `${t.color}20` }}>"</div>
                 <div className="text-[#09daed] tracking-widest text-lg">★★★★★</div>
@@ -71,11 +70,10 @@ export default function TestimonialsSection() {
                 </div>
                 <div>
                   <div className="text-gray-900 font-semibold text-sm">{t.author}</div>
-                  <div className="text-gray-500 text-xs">{t.role}</div>
+                  <div className="text-gray-400 text-xs">{t.role}</div>
                 </div>
               </div>
 
-              {/* Accent corner */}
               <div className="absolute top-0 left-0 w-1 h-full" style={{ background: t.color }} />
             </motion.div>
           ))}

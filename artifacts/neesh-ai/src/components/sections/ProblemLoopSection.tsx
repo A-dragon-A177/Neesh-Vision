@@ -51,8 +51,9 @@ export default function ProblemLoopSection() {
   const cy = 175;
 
   return (
-    <section ref={sectionRef} className="relative section-dark py-32 overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.03]"
+    <section ref={sectionRef} className="relative bg-[#f0fdfe] py-32 overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-[0.025]"
         style={{
           backgroundImage: `radial-gradient(#09daed 1px, transparent 1px)`,
           backgroundSize: "32px 32px",
@@ -65,16 +66,14 @@ export default function ProblemLoopSection() {
           <div className="flex items-center justify-center">
             <div className="relative" style={{ width: 350, height: 350 }}>
               <svg width="350" height="350" className="absolute inset-0">
-                {/* Dotted path behind nodes */}
-                <circle cx={cx} cy={cy} r={R} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" strokeDasharray="4 8" />
-                {/* Outer ring */}
+                <circle cx={cx} cy={cy} r={R} fill="none" stroke="rgba(9,218,237,0.08)" strokeWidth="1" strokeDasharray="4 8" />
                 <circle cx={cx} cy={cy} r={R} fill="none" stroke="rgba(9,218,237,0.1)" strokeWidth="1" />
-                <circle cx={cx} cy={cy} r={R} fill="none" stroke="rgba(9,218,237,0.3)" strokeWidth="1"
+                <circle
+                  cx={cx} cy={cy} r={R} fill="none" stroke="rgba(9,218,237,0.5)" strokeWidth="2"
                   strokeDasharray={`${2 * Math.PI * R * ((activeNode + 1) / 5)} ${2 * Math.PI * R}`}
                   className="transition-all duration-700"
                   style={{ transform: `rotate(-90deg)`, transformOrigin: `${cx}px ${cy}px` }}
                 />
-                {/* Connection lines */}
                 {NODES.map((node, i) => {
                   const from = polarToXY(node.angle, R);
                   const to = polarToXY(NODES[(i + 1) % NODES.length].angle, R);
@@ -83,7 +82,7 @@ export default function ProblemLoopSection() {
                       key={`line-${i}`}
                       x1={cx + from.x} y1={cy + from.y}
                       x2={cx + to.x} y2={cy + to.y}
-                      stroke={i <= activeNode ? "rgba(9,218,237,0.4)" : "rgba(255,255,255,0.05)"}
+                      stroke={i <= activeNode ? "rgba(9,218,237,0.4)" : "rgba(9,218,237,0.06)"}
                       strokeWidth="1"
                       className="transition-all duration-500"
                     />
@@ -91,19 +90,17 @@ export default function ProblemLoopSection() {
                 })}
               </svg>
 
-              {/* Center */}
               <div className="absolute" style={{ left: cx - 40, top: cy - 40 }}>
                 <div
-                  className="w-20 h-20 border border-[#09daed]/30 flex items-center justify-center"
-                  style={{ background: "rgba(9,218,237,0.05)" }}
+                  className="w-20 h-20 border border-[#09daed]/25 flex items-center justify-center"
+                  style={{ background: "rgba(9,218,237,0.06)" }}
                 >
-                  <div className="w-8 h-8 bg-[#09daed]/80 flex items-center justify-center">
+                  <div className="w-8 h-8 bg-[#09daed] flex items-center justify-center">
                     <span className="text-black text-xs font-bold">AI</span>
                   </div>
                 </div>
               </div>
 
-              {/* Nodes */}
               {NODES.map((node, i) => {
                 const { x, y } = polarToXY(node.angle, R);
                 const isActive = i <= activeNode;
@@ -111,18 +108,15 @@ export default function ProblemLoopSection() {
                   <div
                     key={node.label}
                     className="absolute flex flex-col items-center"
-                    style={{
-                      left: cx + x - 34,
-                      top: cy + y - 34,
-                      width: 68,
-                    }}
+                    style={{ left: cx + x - 34, top: cy + y - 34, width: 68 }}
                   >
                     <div
                       className={`w-[68px] h-[68px] border flex items-center justify-center text-xs font-semibold transition-all duration-500 ${
                         isActive
-                          ? "border-[#09daed] bg-[#09daed]/20 text-[#09daed] shadow-[0_0_20px_rgba(9,218,237,0.4)]"
-                          : "border-white/10 bg-white/5 text-white/30"
+                          ? "border-[#09daed] bg-[#09daed]/10 text-[#09daed]"
+                          : "border-gray-200 bg-white text-gray-400"
                       }`}
+                      style={isActive ? { boxShadow: "0 0 20px rgba(9,218,237,0.2)" } : {}}
                     >
                       <div className="text-center">
                         <div className="text-[10px] font-bold">{i + 1}</div>
@@ -143,10 +137,10 @@ export default function ProblemLoopSection() {
               transition={{ duration: 0.7 }}
             >
               <div className="text-[#09daed] text-xs font-medium tracking-widest uppercase mb-4">The Problem</div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
                 90% of startups fail because nobody understands the idea.
               </h2>
-              <p className="text-white/50 text-lg">
+              <p className="text-gray-500 text-lg">
                 Feedback is messy. Signals are invisible.
               </p>
             </motion.div>
@@ -157,7 +151,7 @@ export default function ProblemLoopSection() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="border-l-2 border-[#09daed] pl-4"
             >
-              <p className="text-white/80 text-xl font-medium">
+              <p className="text-gray-900 text-xl font-medium">
                 Neesh AI turns confusion into clarity.
               </p>
             </motion.div>
@@ -172,19 +166,25 @@ export default function ProblemLoopSection() {
                   className={`flex items-center gap-3 p-3 border transition-all duration-500 ${
                     i <= activeNode
                       ? "border-[#09daed]/30 bg-[#09daed]/5"
-                      : "border-white/5 bg-transparent"
+                      : "border-gray-100 bg-gray-50"
                   }`}
                 >
-                  <div className={`w-6 h-6 flex items-center justify-center text-xs font-bold transition-all duration-500 ${
-                    i <= activeNode ? "bg-[#09daed] text-black" : "bg-white/5 text-white/30"
-                  }`}>
+                  <div
+                    className={`w-6 h-6 flex items-center justify-center text-xs font-bold transition-all duration-500 ${
+                      i <= activeNode ? "bg-[#09daed] text-black" : "bg-gray-200 text-gray-400"
+                    }`}
+                  >
                     {i + 1}
                   </div>
                   <div>
-                    <div className={`text-sm font-semibold transition-colors duration-500 ${i <= activeNode ? "text-white" : "text-white/30"}`}>
+                    <div
+                      className={`text-sm font-semibold transition-colors duration-500 ${
+                        i <= activeNode ? "text-gray-900" : "text-gray-400"
+                      }`}
+                    >
                       {node.label}
                     </div>
-                    <div className="text-xs text-white/40">{node.desc}</div>
+                    <div className="text-xs text-gray-400">{node.desc}</div>
                   </div>
                 </motion.div>
               ))}
@@ -193,7 +193,6 @@ export default function ProblemLoopSection() {
         </div>
       </div>
 
-      {/* Section separator */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#09daed]/20 to-transparent" />
     </section>
   );
