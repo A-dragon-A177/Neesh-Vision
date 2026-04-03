@@ -84,8 +84,8 @@ function PricingCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) 
 
       <div className="flex items-start justify-between mb-6">
         <div>
-          <div className="text-gray-900 font-bold text-lg">{plan.name}</div>
-          <div className="text-gray-400 text-xs mt-0.5">{plan.desc}</div>
+          <div className="text-gray-950 font-extrabold text-lg">{plan.name}</div>
+          <div className="text-gray-500 text-xs mt-0.5 font-medium">{plan.desc}</div>
         </div>
         <div
           className="text-[9px] font-bold tracking-widest px-2 py-0.5 border"
@@ -97,14 +97,14 @@ function PricingCard({ plan, index }: { plan: typeof PLANS[0]; index: number }) 
 
       <div className="mb-6">
         <div className="flex items-baseline gap-1">
-          <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
-          <span className="text-gray-400 text-sm">/ {plan.period}</span>
+          <span className="text-3xl font-extrabold text-gray-950">{plan.price}</span>
+          <span className="text-gray-500 text-sm font-medium">/ {plan.period}</span>
         </div>
       </div>
 
       <ul className="space-y-2.5 mb-8 flex-1">
         {plan.features.map((feat) => (
-          <li key={feat} className="flex items-center gap-2.5 text-sm text-gray-600">
+          <li key={feat} className="flex items-center gap-2.5 text-sm text-gray-700 font-medium">
             <div className="w-1 h-1 flex-shrink-0" style={{ background: plan.color }} />
             {feat}
           </li>
@@ -128,13 +128,13 @@ export default function PricingSection() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="pricing" className="bg-[#f0fdfe] py-24 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="pricing" className="bg-white/50 py-24 relative">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="text-[#09daed] text-xs font-medium tracking-widest uppercase mb-4"
+            className="text-[#09daed] text-sm font-bold tracking-widest uppercase mb-4"
           >
             Pricing
           </motion.div>
@@ -142,7 +142,7 @@ export default function PricingSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-4xl md:text-5xl font-extrabold text-gray-950 mb-4"
           >
             Start free. Scale when ready.
           </motion.h2>
@@ -150,7 +150,7 @@ export default function PricingSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-gray-500 max-w-lg mx-auto"
+            className="text-gray-600 max-w-lg mx-auto font-medium"
           >
             No hidden fees. No credit card required. Start validating your ideas today.
           </motion.p>

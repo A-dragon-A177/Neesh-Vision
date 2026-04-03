@@ -3,15 +3,16 @@ import Lenis from "lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "./lib/gsap";
 import Navbar from "./components/Navbar";
+import ScrollCanvas from "./components/ScrollCanvas";
 import HeroSection from "./components/sections/HeroSection";
 import ProblemLoopSection from "./components/sections/ProblemLoopSection";
 import ProductSimSection from "./components/sections/ProductSimSection";
 import FeaturesSection from "./components/sections/FeaturesSection";
+import BlogShowcaseSection from "./components/sections/BlogShowcaseSection";
 import MetricsSection from "./components/sections/MetricsSection";
 import PersonaSection from "./components/sections/PersonaSection";
 import TransformSection from "./components/sections/TransformSection";
 import PricingSection from "./components/sections/PricingSection";
-import TestimonialsSection from "./components/sections/TestimonialsSection";
 import FinalCTASection from "./components/sections/FinalCTASection";
 import FooterSection from "./components/sections/FooterSection";
 
@@ -41,18 +42,22 @@ function App() {
 
   return (
     <div style={{ position: "relative" }}>
-      <div className="relative">
+      {/* Scroll-linked image sequence background */}
+      <ScrollCanvas />
+
+      {/* All content layered above the canvas background */}
+      <div className="relative" style={{ position: "relative", zIndex: 1 }}>
         <Navbar />
         <main>
           <HeroSection />
           <ProblemLoopSection />
-          <ProductSimSection />
           <FeaturesSection />
+          <BlogShowcaseSection />
+          <ProductSimSection />
           <MetricsSection />
           <PersonaSection />
           <TransformSection />
           <PricingSection />
-          <TestimonialsSection />
           <FinalCTASection />
         </main>
         <FooterSection />

@@ -40,10 +40,6 @@ function ChaosSide() {
           {item.text}
         </motion.div>
       ))}
-      <div className="absolute bottom-5 left-5 right-5 border border-red-200 bg-white p-3">
-        <div className="text-red-500 text-xs font-bold mb-1">Status: LOST</div>
-        <div className="text-red-400 text-xs">No signal. No direction. Building blindly.</div>
-      </div>
       <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-10">
         <line x1="0%" y1="40%" x2="100%" y2="20%" stroke="#ef4444" strokeWidth="0.8" />
         <line x1="20%" y1="0%" x2="80%" y2="90%" stroke="#ef4444" strokeWidth="0.5" />
@@ -59,6 +55,9 @@ function ClaritySide() {
     { label: "Clarity Index", val: 87, color: "#09daed" },
     { label: "Market Fit", val: 92, color: "#10b981" },
     { label: "Gap Closed", val: 78, color: "#7c3aed" },
+    { label: "Validation Momentum", val: 94, color: "#f59e0b" },
+    { label: "Gap Remaining", val: 22, color: "#ef4444" },
+    { label: "Persona Coverage", val: 87, color: "#8b5cf6" },
   ];
   return (
     <div
@@ -75,15 +74,15 @@ function ClaritySide() {
       <div className="absolute inset-4 border border-[#09daed]/15 flex flex-col justify-between p-4">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-[#09daed] animate-pulse" />
+            <img src="/neesh-logo.png" alt="Neesh AI" className="w-5 h-5 object-contain" />
             <span className="text-[#09daed] text-xs font-semibold tracking-widest">VALIDATION LOOP ACTIVE</span>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             {items.map((item) => (
               <div key={item.label}>
                 <div className="flex justify-between mb-1">
-                  <span className="text-gray-600 text-xs">{item.label}</span>
-                  <span className="text-gray-900 text-xs font-bold">{item.val}%</span>
+                  <span className="text-gray-700 text-xs font-medium">{item.label}</span>
+                  <span className="text-gray-950 text-xs font-bold">{item.val}%</span>
                 </div>
                 <div className="h-1.5 bg-gray-100">
                   <motion.div
@@ -97,10 +96,6 @@ function ClaritySide() {
               </div>
             ))}
           </div>
-        </div>
-        <div className="border border-[#09daed]/20 bg-white p-3">
-          <div className="text-[#09daed] text-xs font-bold mb-1">✓ Idea Validated</div>
-          <div className="text-gray-500 text-xs">Clear signal. Ready to build with confidence.</div>
         </div>
       </div>
     </div>
@@ -134,13 +129,13 @@ export default function TransformSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-white py-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <section ref={sectionRef} className="relative bg-white/50 py-24">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="text-[#09daed] text-xs font-medium tracking-widest uppercase mb-4"
+            className="text-[#09daed] text-sm font-bold tracking-widest uppercase mb-4"
           >
             Transformation
           </motion.div>
@@ -148,7 +143,7 @@ export default function TransformSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900"
+            className="text-4xl md:text-5xl font-extrabold text-gray-950"
           >
             From idea →{" "}
             <span className="text-[#09daed]">validated product.</span>
@@ -185,6 +180,18 @@ export default function TransformSection() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 border border-[#09daed] bg-white flex items-center justify-center">
               <div className="w-1.5 h-1.5 bg-[#09daed]" />
             </div>
+          </div>
+        </div>
+
+        {/* Status blocks — BELOW the before/after grid, with margin-top for spacing */}
+        <div className="grid grid-cols-2 gap-4 mt-6">
+          <div className="border border-red-200 bg-red-50/50 p-4">
+            <div className="text-red-600 text-xs font-bold mb-1">Status: LOST</div>
+            <div className="text-red-500 text-xs font-medium">No signal. No direction. Building blindly.</div>
+          </div>
+          <div className="border border-[#09daed]/20 bg-[#09daed]/5 p-4">
+            <div className="text-[#09daed] text-xs font-bold mb-1">✓ Idea Validated</div>
+            <div className="text-gray-600 text-xs font-medium">Clear signal. Ready to build with confidence.</div>
           </div>
         </div>
       </div>

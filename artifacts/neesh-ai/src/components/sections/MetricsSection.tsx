@@ -67,11 +67,11 @@ export default function MetricsSection() {
   const { ref, inView } = useInView(0.2);
 
   return (
-    <section className="relative bg-white py-24 overflow-hidden">
+    <section className="relative bg-white/50 py-24 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,218,237,0.04)_0%,transparent_70%)]" />
       <ParticleField />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-6 relative z-10">
         <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center mb-16 flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -79,13 +79,13 @@ export default function MetricsSection() {
             className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#09daed]/25 bg-[#09daed]/5 mb-6"
           >
             <div className="w-1.5 h-1.5 bg-[#09daed] animate-pulse" />
-            <span className="text-[#09daed] text-xs font-medium tracking-widest uppercase">AI Core • Live</span>
+            <span className="text-[#09daed] text-xs font-bold tracking-widest uppercase">AI Core • Live</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-4xl md:text-5xl font-extrabold text-gray-950 mb-4"
           >
             Not guesses.{" "}
             <span className="text-[#09daed]">Measured validation.</span>
@@ -99,17 +99,17 @@ export default function MetricsSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="bg-white p-6 flex flex-col items-center text-center border border-gray-100"
-              style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.05)" }}
+              className="bg-white p-6 flex flex-col items-center text-center border border-gray-200"
+              style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.07)" }}
             >
               <div className="relative mb-4">
                 <CircleProgress value={metric.value} color={metric.color} size={96} />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-xl font-bold text-gray-900">{metric.value}</span>
+                  <span className="text-xl font-extrabold text-gray-950">{metric.value}</span>
                 </div>
               </div>
-              <div className="text-sm font-semibold text-gray-900 mb-1">{metric.label}</div>
-              <div className="text-xs text-gray-400 text-center leading-relaxed">{metric.desc}</div>
+              <div className="text-sm font-bold text-gray-950 mb-1">{metric.label}</div>
+              <div className="text-xs text-gray-500 text-center leading-relaxed">{metric.desc}</div>
 
               <div className="mt-3 w-full h-8 flex items-end gap-0.5">
                 {Array.from({ length: 12 }, (_, j) => (

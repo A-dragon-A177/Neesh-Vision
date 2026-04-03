@@ -22,12 +22,15 @@ export default function Navbar() {
           : "bg-white/80 backdrop-blur-sm"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 bg-[#09daed] flex items-center justify-center">
-            <span className="text-black font-bold text-xs">N</span>
-          </div>
-          <span className="text-gray-900 font-semibold text-sm tracking-wide">Neesh AI</span>
+          <img
+            src="/neesh-logo.png"
+            alt="Neesh AI Logo"
+            className="w-9 h-9 object-contain"
+            style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.1))" }}
+          />
+          <span className="text-gray-900 font-bold text-base tracking-wide">Neesh AI</span>
         </div>
 
         <div className="hidden md:flex items-center gap-8">
@@ -35,7 +38,7 @@ export default function Navbar() {
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-gray-500 hover:text-gray-900 text-sm transition-colors duration-200 font-medium"
+              className="text-gray-700 hover:text-gray-900 text-sm transition-colors duration-200 font-semibold"
             >
               {item}
             </a>
@@ -43,10 +46,10 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <button className="text-gray-600 hover:text-gray-900 text-sm transition-colors px-4 py-2 font-medium">
+          <button className="text-gray-700 hover:text-gray-900 text-sm transition-colors px-4 py-2 font-semibold">
             Sign in
           </button>
-          <button className="bg-[#09daed] text-black text-sm font-semibold px-4 py-2 hover:bg-[#07c4d4] transition-colors">
+          <button className="bg-[#09daed] text-black text-sm font-bold px-5 py-2.5 hover:bg-[#07c4d4] transition-colors">
             Start Free
           </button>
         </div>
@@ -68,11 +71,11 @@ export default function Navbar() {
           className="md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4"
         >
           {["Features", "Pricing", "Docs", "Blog"].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="text-gray-600 text-sm font-medium">
+            <a key={item} href={`#${item.toLowerCase()}`} className="text-gray-700 text-sm font-semibold">
               {item}
             </a>
           ))}
-          <button className="bg-[#09daed] text-black text-sm font-semibold px-4 py-2 w-full">
+          <button className="bg-[#09daed] text-black text-sm font-bold px-4 py-2 w-full">
             Start Free
           </button>
         </motion.div>

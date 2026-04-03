@@ -22,13 +22,13 @@ export default function TestimonialsSection() {
   const { ref, inView } = useInView(0.2);
 
   return (
-    <section className="bg-gray-50 border-t border-b border-gray-100 py-24">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="bg-white/50 border-t border-b border-gray-100 py-24">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="text-[#09daed] text-xs font-medium tracking-widest uppercase mb-4"
+            className="text-[#09daed] text-sm font-bold tracking-widest uppercase mb-4"
           >
             Testimonials
           </motion.div>
@@ -36,7 +36,7 @@ export default function TestimonialsSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900"
+            className="text-4xl md:text-5xl font-extrabold text-gray-950"
           >
             What founders are saying
           </motion.h2>
@@ -57,7 +57,7 @@ export default function TestimonialsSection() {
                 <div className="text-[#09daed] tracking-widest text-lg">★★★★★</div>
               </div>
 
-              <blockquote className="text-gray-800 text-lg font-medium leading-relaxed mb-6">
+              <blockquote className="text-gray-950 text-lg font-semibold leading-relaxed mb-6">
                 "{t.quote}"
               </blockquote>
 
@@ -69,8 +69,8 @@ export default function TestimonialsSection() {
                   {t.avatar}
                 </div>
                 <div>
-                  <div className="text-gray-900 font-semibold text-sm">{t.author}</div>
-                  <div className="text-gray-400 text-xs">{t.role}</div>
+                  <div className="text-gray-950 font-bold text-sm">{t.author}</div>
+                  <div className="text-gray-500 text-xs font-medium">{t.role}</div>
                 </div>
               </div>
 

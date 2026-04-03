@@ -74,10 +74,10 @@ function FeatureCard({ feature, index }: { feature: typeof FEATURES[0]; index: n
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative bg-white p-6 border border-gray-100 hover:border-[#09daed]/30 transition-all duration-300 flex flex-col"
-      style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}
+      className="group relative bg-white p-6 border border-gray-200 hover:border-[#09daed]/30 transition-all duration-300 flex flex-col"
+      style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
     >
-      <div className="absolute top-2 left-2 text-[10px] text-gray-300 font-mono">
+      <div className="absolute top-2 left-2 text-[10px] text-gray-400 font-mono font-bold">
         {String(index + 1).padStart(2, "0")}
       </div>
       <div className="absolute top-0 left-0 bottom-0 w-[2px] bg-transparent group-hover:bg-[#09daed] transition-colors duration-300" />
@@ -91,15 +91,9 @@ function FeatureCard({ feature, index }: { feature: typeof FEATURES[0]; index: n
         </div>
       </div>
 
-      <h3 className="text-gray-900 font-semibold text-base mb-2 leading-tight">{feature.title}</h3>
-      <p className="text-gray-500 text-sm leading-relaxed flex-1">{feature.desc}</p>
+      <h3 className="text-gray-950 font-bold text-base mb-2 leading-tight">{feature.title}</h3>
+      <p className="text-gray-600 text-sm leading-relaxed flex-1">{feature.desc}</p>
 
-      {!isAudienceInsights && (
-        <div className="mt-4 flex items-center gap-2 text-[#09daed]/0 group-hover:text-[#09daed]/70 transition-all duration-300">
-          <span className="text-xs font-medium">Learn more</span>
-          <span className="text-xs">→</span>
-        </div>
-      )}
     </motion.div>
   );
 }
@@ -108,13 +102,13 @@ export default function FeaturesSection() {
   const { ref, inView } = useInView(0.1);
 
   return (
-    <section id="features" className="bg-white py-24 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="features" className="bg-white/50 py-24 relative">
+      <div className="max-w-[1440px] mx-auto px-6">
         <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="text-[#09daed] text-xs font-medium tracking-widest uppercase mb-4"
+            className="text-[#09daed] text-sm font-bold tracking-widest uppercase mb-4"
           >
             Core Features
           </motion.div>
@@ -122,7 +116,7 @@ export default function FeaturesSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-4xl md:text-5xl font-extrabold text-gray-950 mb-4"
           >
             Everything you need to validate faster
           </motion.h2>
@@ -130,7 +124,7 @@ export default function FeaturesSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-gray-500 max-w-lg mx-auto"
+            className="text-gray-600 max-w-lg mx-auto font-medium"
           >
             Six AI-powered modules working together to turn your raw ideas into validated products.
           </motion.p>
